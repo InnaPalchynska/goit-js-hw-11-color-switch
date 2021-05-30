@@ -19,6 +19,9 @@ refs.startBtn.addEventListener('click', onStartBtnClick);
 refs.stopBtn.addEventListener('click', onStopBtnClick);
 
 function onStartBtnClick() {
+  if (setColorInterval) {
+    return;
+  }
   refs.startBtn.disabled = true;
   setColorInterval = setInterval(setColor, SET_COLOR_DELAY);
 }
@@ -26,6 +29,7 @@ function onStartBtnClick() {
 function onStopBtnClick() {
   refs.startBtn.disabled = false;
   clearInterval(setColorInterval);
+  setColorInterval = '';
 }
 
 function setColor() {
